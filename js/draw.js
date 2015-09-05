@@ -29,7 +29,7 @@ window.onload = function() {
         console.log('Animate.');
         var sequence_path = res[0];
         var highlight = res[1];
-        drawPath(a, b, rects, sequence_path, highlight, highlight.length*150,
+        drawPath(a, b, rects, sequence_path, highlight, highlight.length*250,
                    { stroke: 'black', 'stroke-width': 2, 'stroke-opacity': 1, fill: 'none', 'fill-opacity': 0 },
                    function()
                    {
