@@ -16,7 +16,8 @@ window.onload = function() {
 
         var x = 0,
             y = 0;
-        var size = Math.min(canvas.canvas.offsetHeight, canvas.canvas.offsetWidth);
+        var size = Math.min($('#canvas_container').height(), $('#canvas_container').width());
+
         var  width = size/b,
              height = size/b;
 
@@ -29,7 +30,7 @@ window.onload = function() {
         console.log('Animate.');
         var sequence_path = res[0];
         var highlight = res[1];
-        drawPath(a, b, rects, sequence_path, highlight, highlight.length*250,
+        drawPath(a, b, rects, sequence_path, highlight, highlight.length*150,
                    { stroke: 'black', 'stroke-width': 2, 'stroke-opacity': 1, fill: 'none', 'fill-opacity': 0 },
                    function()
                    {
@@ -64,7 +65,7 @@ window.onload = function() {
 
         var interval_length = 50;
         var result = path;
-        //var number = canvas.text(10, 10, 1);
+
         $("#count").text(1);
         var start_time = new Date().getTime();
         var old_index = 0;
@@ -78,7 +79,7 @@ window.onload = function() {
 
             path.animate( attr, interval_length );
 
-            var index = Math.floor(highlight.length*elapsed_time/duration);
+            var index = Math.floor((highlight.length-1)*elapsed_time/duration);
 
             // To avoid skipping something, just catch up the rectangles
             if(index > old_index && index >= 0 && index < highlight.length){
@@ -149,7 +150,6 @@ window.onload = function() {
             }
 
             sequence_path.push("L" + new_x + "," + new_y);
-
             if(i >= b || i <= 0){
                 reverse_x = !reverse_x;
             };
